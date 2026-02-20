@@ -1,0 +1,5 @@
+rootProject.name = 'response'
+
+include 'response-core'
+include 'response-reactive'
+include 'response-servlet'

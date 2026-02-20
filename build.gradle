@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.10' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+    id 'maven-publish'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'evsis.common'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    pluginManager.withPlugin('org.springframework.boot') {
+        bootJar {
+            enabled = false
+        }
+    }
+
+    tasks.named('jar') {
+        enabled = true
+        archiveClassifier = ''
+    }
+}
