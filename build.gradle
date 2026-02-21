@@ -9,7 +9,7 @@ subprojects {
     apply plugin: 'maven-publish'
     apply plugin: 'io.spring.dependency-management'
 
-    group = 'evsis.common'
+    group = 'sudal.common'
     version = '0.0.1-SNAPSHOT'
 
     repositories {
