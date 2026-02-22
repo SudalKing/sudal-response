@@ -13,9 +13,9 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public class GlobalReactiveResponseHandler extends ResponseBodyResultHandler {
+public class GlobalReactiveControllerResponseHandler extends ResponseBodyResultHandler {
 
-    public GlobalReactiveResponseHandler(List<HttpMessageWriter<?>> writers, RequestedContentTypeResolver resolver) {
+    public GlobalReactiveControllerResponseHandler(List<HttpMessageWriter<?>> writers, RequestedContentTypeResolver resolver) {
         super(writers, resolver);
         setOrder(0);
     }

@@ -15,9 +15,9 @@ import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public class ServerReactiveExceptionHandler extends AbstractErrorWebExceptionHandler {
+public class ReactiveServerExceptionHandler extends AbstractErrorWebExceptionHandler {
 
-    public ServerReactiveExceptionHandler(ErrorAttributes errorAttributes,
+    public ReactiveServerExceptionHandler(ErrorAttributes errorAttributes,
                                           WebProperties.Resources resources,
                                           ApplicationContext applicationContext,
                                           ServerCodecConfigurer codecConfigurer

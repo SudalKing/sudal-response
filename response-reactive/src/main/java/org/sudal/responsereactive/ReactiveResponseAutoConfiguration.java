@@ -1,8 +1,8 @@
 package org.sudal.responsereactive;
 
 import org.sudal.responsereactive.exception.DefaultReactiveExceptionAdvice;
-import org.sudal.responsereactive.exception.ServerReactiveExceptionHandler;
-import org.sudal.responsereactive.response.GlobalReactiveResponseHandler;
+import org.sudal.responsereactive.exception.ReactiveServerExceptionHandler;
+import org.sudal.responsereactive.response.GlobalReactiveControllerResponseHandler;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.web.WebProperties;
@@ -18,16 +18,16 @@ import org.springframework.web.reactive.accept.RequestedContentTypeResolver;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @Import({
         DefaultReactiveExceptionAdvice.class,
-        GlobalReactiveResponseHandler.class
+        GlobalReactiveControllerResponseHandler.class
 })
 public class ReactiveResponseAutoConfiguration {
 
     @Bean
-    public GlobalReactiveResponseHandler globalReactiveResponseHandler(
+    public GlobalReactiveControllerResponseHandler globalReactiveResponseHandler(
             ServerCodecConfigurer serverCodecConfigurer,
             RequestedContentTypeResolver requestedContentTypeResolver
     ) {
-        return new GlobalReactiveResponseHandler(
+        return new GlobalReactiveControllerResponseHandler(
                 serverCodecConfigurer.getWriters(),
                 requestedContentTypeResolver
         );
@@ -35,13 +35,13 @@ public class ReactiveResponseAutoConfiguration {
 
     @Bean
     @Order(-1)
-    public ServerReactiveExceptionHandler serverReactiveExceptionHandler(
+    public ReactiveServerExceptionHandler serverReactiveExceptionHandler(
             ErrorAttributes errorAttributes,
             WebProperties webProperties,
             ApplicationContext applicationContext,
             ServerCodecConfigurer serverCodecConfigurer
     ) {
-        return new ServerReactiveExceptionHandler(
+        return new ReactiveServerExceptionHandler(
                 errorAttributes,
                 webProperties.getResources(),
                 applicationContext,
